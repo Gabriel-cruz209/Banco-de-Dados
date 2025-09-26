@@ -12,13 +12,13 @@ $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET[
 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
 // VERIFICAR DADOS NO BANCO
-if($result = $mysqli->query("SELECT * FROM Livros ORDER BY '. $column . '' . $sort_order")){
+if($result = $mysqli->query('SELECT * FROM Livros ORDER BY '. $column . ' ' . $sort_order)){
     //VARIAS PARA A TABELA
     $up_or_down = str_replace(array('ASC','DESC'),
     array('up','down'), $sort_order);
     $asc_or_desc = $sort_order == 'ASC' ? 'desc' :
     'asc';
-    $add_class = 'class="highlight"';
+    $add_class = ' class="highlight"';
     ?>
 
     <!DOCTYPE html>
@@ -26,6 +26,47 @@ if($result = $mysqli->query("SELECT * FROM Livros ORDER BY '. $column . '' . $so
         <head>
             <title> Banco de Dados - Códigos e Letras</title>
             <meta charset="utf-8">
+
+            <style>
+			html {
+				font-family: Tahoma, Geneva, sans-serif;
+				padding: 10px;
+			}
+			table {
+				border-collapse: collapse;
+				width: 500px;
+			}
+			th {
+				background-color: #54585d;
+				border: 1px solid #54585d;
+			}
+			th:hover {
+				background-color: #64686e;
+			}
+			th a {
+				display: block;
+				text-decoration:none;
+				padding: 10px;
+				color: #ffffff;
+				font-weight: bold;
+				font-size: 13px;
+			}
+			th a i {
+				margin-left: 5px;
+				color: rgba(255,255,255,0.4);
+			}
+			td {
+				padding: 10px;
+				color: #636363;
+				border: 1px solid #dddfe1;
+			}
+			tr {
+				background-color: #ffffff;
+			}
+			tr .highlight {
+				background-color: #f9fafb;
+			}
+			</style>
         </head>
         <body>
             <table>
