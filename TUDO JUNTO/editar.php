@@ -1,18 +1,28 @@
+<?php
+$conn = new mysqli("localhost","root","senaisp","livraria");
 
+$id = $_GET['id'];
+$result=$conn->query("SELECT * FROM usuarios WHERE id_usu = '$id'");
+$row = $result->fetch_assoc();
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body{
+?>
+
+<form action="atualizar.php" method="POST">
+    <input type="hidden" name="id_usu" value="<?php echo $row['id_usu'];?>">
+    Nome: <input type="text" name="nome" value="<?php echo $row['nome']; ?>"><br>
+    Email: <input type="email" name="email" value="<?php echo $row['email']; ?>"><br>
+    <input type="submit" value="Atualizar">
+</form>
+
+<style>
+    body{
             background-color: aqua;
             top: 0;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
         form{
             display: flex;
@@ -22,10 +32,6 @@
             margin-top: 200px;
         }
 
-        label{
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            margin-bottom: 5px;
-        }
         input{
             border: 1px solid transparent;
             border-radius: 7px;
@@ -40,18 +46,6 @@
             box-shadow: 0 0 10px #828282;
             border: 2px solid #656565;
             transform: translateY(-2px);
-            transform: rotate(360deg);
         }
-    </style>
-    <title>Inserir PHP</title>
-</head>
-<body>
-    <form action="inserir.php" method="POST">
-        <label>Nome:</label>
-        <input type="text" name="nome" required placeholder="Digite o nome de usuário"><br>
-        <label>Email:</label>
-        <input type="email" name="email" required placeholder="Digite o email do usuário"><br>
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-</html>
+
+</style>

@@ -1,0 +1,19 @@
+<?php
+$conn = new mysqli("localhost","root","senaisp","livraria");
+
+$id = $_POST['id_usu'];
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+
+$sql = "UPDATE usuarios SET nome='$nome', email='$email' WHERE id_usu='$id'";
+
+if($conn->query($sql) === TRUE) {
+    echo "Dados atualizados com sucesso";
+    echo "<br><a href='index.html'>Voltar</a>";
+} else {
+    echo "Erro: " .  $conn->error;
+}
+
+$conn->close();
+
+?>
