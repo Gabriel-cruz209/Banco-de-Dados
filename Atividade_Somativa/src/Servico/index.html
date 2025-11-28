@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Serviço</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Bem-vindo à Somativa Mecânica</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/Cliente/index.html">Clientes </a>
+          </li>
+          <li>
+            <a href="/Mecanico/index.html">Mecânicos</a>
+          </li>
+          <li>
+            <a href="/Veiculo/index.html">Veículos</a>
+          </li>
+          <li>
+            <a href="/Servico/index.html">Serviços</a>
+          </li>
+          <li>
+            <a href="/Peca/index.html">Peças</a>
+          </li>
+          <li>
+            <a href="/OS/index.html">Ordens de Serviço</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <h1>Serviço</h1>
+      <p><a href="index.php">Abrir lista / formulário</a></p>
+
+      <h2>Inserir novo Serviço</h2>
+      <form method="post" action="inserir.php">
+        <label
+          >Nome do Serviço:<br /><input
+            type="text"
+            name="nome_servico"
+            required /></label
+        ><br /><br />
+        <label>Tipo:<br /><input type="text" name="tipo_servico" /></label
+        ><br /><br />
+        <label
+          >Preço:<br /><input
+            type="number"
+            name="preco_servico"
+            step="0.01" /></label
+        ><br /><br />
+        <label
+          >Descrição:<br /><input
+            name="descricao_servico"
+            rows="3"
+          ></label
+        ><br /><br />
+        <button type="submit">Inserir Serviço</button>
+      </form>
+    </div>
+  </body>
+</html>

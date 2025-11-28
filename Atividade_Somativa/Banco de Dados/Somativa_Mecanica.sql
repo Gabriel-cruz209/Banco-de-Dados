@@ -71,5 +71,24 @@ FOREIGN KEY(id_cliente) REFERENCES Cliente (id_cliente),
 FOREIGN KEY(id_veiculo) REFERENCES Veiculo (id_veiculo)
 );
 
-insert into Cliente (
+insert into Cliente (nome_cliente,cpf_cliente,celular_cliente,endereco_cliente,email_cliente)
+values ("Pedro Calazans", "111.111.111-90", "19908909090", "Rua sebastiao camargo calazans n20","contenporaneo@gmail.com");
+
+insert into Mecanico (nome_mecanico,cpf_mecanico,celular_mecanico,endereco_mecanico,email_mecanico,salario_mecanico)
+values ("Oswaldo", "121.211.121-90", "19978909780", "Rua Cafe com Leite","cafess@gmail.com", 10000);
+
+insert into Servico (nome_servico,tipo_servico,preco_servico,descricao_servico)
+values ("Revisao", "Revisao Completa", 2000, "Foi realizada uma revisao completa pelo carro");
+
+insert into possuem (id_cliente,id_veiculo)
+values (1,1);
+
+insert into Veiculo(marca_veiculo,modelo_veiculo,ano_veiculo,cor_veiculo,placa_veiculo)
+values ("Nissan", "Skyline R34", "2005-02-15", "Azul", "ABC1234");
+
+insert into Peca(nome_peca,tipo_peca,preco_peca,descricao_peca)
+values ('Embreagem Completa', 'Transmissão', 850.00, 'Kit completo de embreagem para veículos populares');
+
+insert into OS (preco_os,data_inicio_os,descricao_os,data_termino_os,id_cliente,id_mecanico,id_peca,id_veiculo,id_servico)
+values (1500.00,'2025-02-10','Troca de embreagem e revisão completa','2025-02-15',1,1,1,1,1);
 

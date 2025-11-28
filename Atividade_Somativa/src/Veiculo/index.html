@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Veículo</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Bem-vindo à Somativa Mecânica</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/Cliente/index.html">Clientes </a>
+          </li>
+          <li>
+            <a href="/Mecanico/index.html">Mecânicos</a>
+          </li>
+          <li>
+            <a href="/Veiculo/index.html">Veículos</a>
+          </li>
+          <li>
+            <a href="/Servico/index.html">Serviços</a>
+          </li>
+          <li>
+            <a href="/Peca/index.html">Peças</a>
+          </li>
+          <li>
+            <a href="/OS/index.html">Ordens de Serviço</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <h1>Veículo</h1>
+      <p><a href="index.php">Abrir lista / formulário</a></p>
+
+      <h2>Inserir novo Veículo</h2>
+      <form method="post" action="inserir.php">
+        <label
+          >Marca:<br /><input
+            type="text"
+            name="marca_veiculo"
+            required /></label
+        ><br /><br />
+        <label>Modelo:<br /><input type="text" name="modelo_veiculo" /></label
+        ><br /><br />
+        <label>Ano:<br /><input type="date" name="ano_veiculo" /></label
+        ><br /><br />
+        <label>Cor:<br /><input type="text" name="cor_veiculo" /></label
+        ><br /><br />
+        <label>Placa:<br /><input type="text" name="placa_veiculo" /></label
+        ><br /><br />
+        <button type="submit">Inserir Veículo</button>
+      </form>
+    </div>
+  </body>
+</html>

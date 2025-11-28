@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+  background-color: #f0f7ff;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  max-width: 1000px;
+  margin: 28px auto;
+  padding: 16px;
+}
+h1 {
+  color: #123f6b;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+a.btn {
+  display: inline-block;
+  padding: 6px 10px;
+  background: #0a74da;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+    </style>
+    <title>Somativa Mecânica</title>
+  </head>
+  <body>
+    <header>
+      <h1>Bem-vindo à Somativa Mecânica</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/Cliente/index.html">Clientes </a>
+          </li>
+          <li>
+            <a href="/Mecanico/index.html">Mecânicos</a>
+          </li>
+          <li>
+            <a href="/Veiculo/index.html">Veículos</a>
+          </li>
+          <li>
+            <a href="/Servico/index.html">Serviços</a>
+          </li>
+          <li>
+            <a href="/Peca/index.html">Peças</a>
+          </li>
+          <li>
+            <a href="/OS/index.html">Ordens de Serviço</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container"></div>
+    </main>
+    <footer>
+      <p>&copy; Sua Empresa. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+      function sec(secao) {
+        document.getElementById("Unidade").classList.add("hidden");
+        document.getElementById("Aluno").classList.add("hidden");
+        document.getElementById("Comunicado").classList.add("hidden");
+        document.getElementById("Aulas").classList.add("hidden");
+        document.getElementById("Funcionario").classList.add("hidden");
+        document.getElementById("AvFisica").classList.add("hidden");
+
+        document.getElementById(secao).classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>

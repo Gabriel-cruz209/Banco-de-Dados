@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mecânico</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+	<header>
+      <h1>Bem-vindo à Somativa Mecânica</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/Cliente/index.html">Clientes </a>
+          </li>
+          <li>
+            <a href="/Mecanico/index.html">Mecânicos</a>
+          </li>
+          <li>
+            <a href="/Veiculo/index.html">Veículos</a>
+          </li>
+          <li>
+            <a href="/Servico/index.html">Serviços</a>
+          </li>
+          <li>
+            <a href="/Peca/index.html">Peças</a>
+          </li>
+          <li>
+            <a href="/OS/index.html">Ordens de Serviço</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <h1>Mecânico</h1>
+      <p><a href="index.php">Abrir lista / formulário</a></p>
+
+      <h2>Inserir novo Mecânico</h2>
+      <form method="post" action="inserir.php">
+        <label
+          >Nome:<br /><input type="text" name="nome_mecanico" required /></label
+        ><br /><br />
+        <label>CPF:<br /><input type="text" name="cpf_mecanico" /></label
+        ><br /><br />
+        <label
+          >Celular:<br /><input type="text" name="celular_mecanico" /></label
+        ><br /><br />
+        <label
+          >Endereço:<br /><input type="text" name="endereco_mecanico" /></label
+        ><br /><br />
+        <label>Email:<br /><input type="email" name="email_mecanico" /></label
+        ><br /><br />
+        <label
+          >Salário:<br /><input
+            type="number"
+            name="salario_mecanico"
+            step="0.01" /></label
+        ><br /><br />
+        <button type="submit">Inserir Mecânico</button>
+      </form>
+    </div>
+  </body>
+</html>

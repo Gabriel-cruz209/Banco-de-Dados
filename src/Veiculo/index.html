@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>Veículo</title>
+<style>
+body{background-color:aqua;margin:0;padding:20px;font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif}
+.container{max-width:900px;margin:0 auto}
+a{display:inline-block;padding:8px 12px;background:#0a74da;color:#fff;border-radius:6px;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Veículo</h1>
+<p><a href="index.php">Abrir lista / formulário</a></p>
+
+<h2>Inserir novo Veículo</h2>
+<form method="post" action="inserir.php">
+	<label>Marca:<br><input type="text" name="marca_veiculo" required></label><br><br>
+	<label>Modelo:<br><input type="text" name="modelo_veiculo"></label><br><br>
+	<label>Ano:<br><input type="number" name="ano_veiculo"></label><br><br>
+	<label>Cor:<br><input type="text" name="cor_veiculo"></label><br><br>
+	<label>Placa:<br><input type="text" name="placa_veiculo"></label><br><br>
+	<button type="submit">Inserir Veículo</button>
+</form>
+</div>
+</body>
+</html>

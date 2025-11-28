@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>Cliente</title>
+<style>
+body{background-color:aqua;margin:0;padding:20px;font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif}
+.container{max-width:900px;margin:0 auto}
+a{display:inline-block;padding:8px 12px;background:#0a74da;color:#fff;border-radius:6px;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Cliente</h1>
+<p><a href="index.php">Abrir lista / formulário</a></p>
+
+<h2>Inserir novo Cliente</h2>
+<form method="post" action="inserir.php">
+	<label>Nome:<br><input type="text" name="nome_cliente" required></label><br><br>
+	<label>Email:<br><input type="email" name="email_cliente"></label><br><br>
+	<label>Endereço:<br><input type="text" name="endereco_cliente"></label><br><br>
+	<label>CPF:<br><input type="text" name="cpf_cliente"></label><br><br>
+	<label>Celular:<br><input type="text" name="celular_cliente"></label><br><br>
+	<button type="submit">Inserir Cliente</button>
+</form>
+</div>
+</body>
+</html>
