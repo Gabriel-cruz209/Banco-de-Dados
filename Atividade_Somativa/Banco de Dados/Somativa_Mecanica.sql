@@ -71,6 +71,8 @@ FOREIGN KEY(id_cliente) REFERENCES Cliente (id_cliente),
 FOREIGN KEY(id_veiculo) REFERENCES Veiculo (id_veiculo)
 );
 
+drop table possuem;
+
 insert into Cliente (nome_cliente,cpf_cliente,celular_cliente,endereco_cliente,email_cliente)
 values ("Pedro Calazans", "111.111.111-90", "19908909090", "Rua sebastiao camargo calazans n20","contenporaneo@gmail.com");
 
@@ -91,4 +93,35 @@ values ('Embreagem Completa', 'Transmissão', 850.00, 'Kit completo de embreagem
 
 insert into OS (preco_os,data_inicio_os,descricao_os,data_termino_os,id_cliente,id_mecanico,id_peca,id_veiculo,id_servico)
 values (1500.00,'2025-02-10','Troca de embreagem e revisão completa','2025-02-15',1,1,1,1,1);
+
+
+-- SELECT --
+select * from Clientes;
+select * from Veiculos;
+select *from Pecas;
+select * from Mecanicos;
+select * from Servicos;
+select * from OS;
+select * from possui;
+
+-- ATIVIDADES SELECTS
+-- 1.Selecione todos os veículos cadastrados que são da marca "Ford
+SELECT * 
+FROM Veiculo
+WHERE marca_veiculo = 'Ford';
+
+-- 2.Clientes que abriram OS nos últimos 6 meses
+SELECT * FROM Cliente
+WHERE id_cliente IN (
+    SELECT id_cliente FROM OS
+    WHERE data_inicio_os >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+);
+
+-- 3.Mecânicos com “Injeção Eletrônica” no nome
+SELECT * FROM Mecanico
+WHERE nome_mecanico LIKE '%Injeção Eletrônica%';
+
+-- 4.OS com status “Aguardando Peça”
+SELECT * FROM Servico
+WHERE tipo_Servico = 'Aguardando Peça';
 
