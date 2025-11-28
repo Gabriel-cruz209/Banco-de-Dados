@@ -5,59 +5,93 @@
     <title>OS</title>
     <link rel="stylesheet" href="style.css">
   </head>
+
   <body>
     <header>
       <h1>Bem-vindo à Somativa Mecânica</h1>
       <nav>
         <ul>
-          <li>
-            <a href="/Cliente/index.html">Clientes </a>
-          </li>
-          <li>
-            <a href="/Mecanico/index.html">Mecânicos</a>
-          </li>
-          <li>
-            <a href="/Veiculo/index.html">Veículos</a>
-          </li>
-          <li>
-            <a href="/Servico/index.html">Serviços</a>
-          </li>
-          <li>
-            <a href="/Peca/index.html">Peças</a>
-          </li>
-          <li>
-            <a href="/OS/index.html">Ordens de Serviço</a>
-          </li>
+          <li><a href="/Cliente/index.html">Clientes </a></li>
+          <li><a href="/Mecanico/index.html">Mecânicos</a></li>
+          <li><a href="/Veiculo/index.html">Veículos</a></li>
+          <li><a href="/Servico/index.html">Serviços</a></li>
+          <li><a href="/Peca/index.html">Peças</a></li>
+          <li><a href="/OS/index.html">Ordens de Serviço</a></li>
         </ul>
       </nav>
     </header>
+
     <div class="container">
       <h1>OS</h1>
       <p><a href="index.php">Abrir lista / formulário</a></p>
 
       <h2>Inserir Ordem de Serviço</h2>
+
       <form method="post" action="inserir.php">
-        <label
-          >Preço:<br /><input
-            type="number"
-            name="preco_os"
-            step="0.01"
-            required /></label
-        ><br /><br />
-        <label
-          >Data Início:<br /><input type="date" name="data_inicio_os" /></label
-        ><br /><br />
-        <label
-          >Descrição:<br /><textarea
-            name="descricao_os"
-            rows="3"
-          ></textarea></label
-        ><br /><br />
-        <label
-          >Data Término:<br /><input
-            type="date"
-            name="data_termino_os" /></label
-        ><br /><br />
+
+        <!-- CLIENTE -->
+        <label>
+          Cliente:<br>
+          <input type="text" name="id_cliente" placeholder="ID do cliente" required>
+        </label>
+        <br><br>
+
+        <!-- VEÍCULO -->
+        <label>
+          Veículo:<br>
+          <input type="text" name="id_veiculo" placeholder="ID do veículo" required>
+        </label>
+        <br><br>
+
+        <!-- MECÂNICO -->
+        <label>
+          Mecânico:<br>
+          <input type="text" name="id_mecanico" placeholder="ID do mecânico" required>
+        </label>
+        <br><br>
+
+        <!-- SERVIÇO -->
+        <label>
+          Serviço:<br>
+          <input type="text" name="id_servico" placeholder="ID do serviço" required>
+        </label>
+        <br><br>
+
+        <!-- PEÇA -->
+        <label>
+          Peça utilizada:<br>
+          <input type="text" name="id_peca" placeholder="ID da peça" required>
+        </label>
+        <br><br>
+
+        <!-- PREÇO -->
+        <label>
+          Preço:<br>
+          <input type="number" name="preco_os" step="0.01" required />
+        </label>
+        <br><br>
+
+        <!-- DATA INÍCIO -->
+        <label>
+          Data Início:<br />
+          <input type="date" name="data_inicio_os" />
+        </label>
+        <br><br>
+
+        <!-- DESCRIÇÃO -->
+        <label>
+          Descrição:<br />
+          <textarea name="descricao_os" rows="3"></textarea>
+        </label>
+        <br><br>
+
+        <!-- DATA TÉRMINO -->
+        <label>
+          Data Término:<br />
+          <input type="date" name="data_termino_os" />
+        </label>
+        <br><br>
+
         <button type="submit">Inserir OS</button>
       </form>
     </div>

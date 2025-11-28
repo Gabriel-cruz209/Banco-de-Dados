@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $conn = new mysqli("localhost", "root", "senaisp", "mecanica");
 
@@ -8,21 +8,54 @@ if ($conn->connect_error) {
 
 // Verifica se os dados foram enviados via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $id = $_POST['id'];
-    $preco_os = $_POST['preco_os'];
+
+    $preco_os       = $_POST['preco_os'];
     $data_inicio_os = $_POST['data_inicio_os'];
-    $descricao_os = $_POST['descricao_os'];
+    $descricao_os   = $_POST['descricao_os'];
     $data_termino_os = $_POST['data_termino_os'];
 
-    // Atualiza a ordem de serviço no banco de dados
-    $sql = "UPDATE OS SET preco_os='$preco_os', data_inicio_os='$data_inicio_os', descricao_os='$descricao_os', data_termino_os='$data_termino_os' WHERE id_os='$id'";
+    $id_cliente  = $_POST['id_cliente'];
+    $id_peca     = $_POST['id_peca'];
+    $id_mecanico = $_POST['id_mecanico'];
+    $id_servico  = $_POST['id_servico'];
+    $id_veiculo  = $_POST['id_veiculo'];
 
-    if ($conn->query($sql) === TRUE) {
+    // Query segura com prepared statement
+    $sql = "UPDATE OS 
+            SET preco_os = ?, data_inicio_os = ?, descricao_os = ?, data_termino_os = ?, 
+                id_cliente = ?, id_peca = ?, id_mecanico = ?, id_servico = ?, id_veiculo = ?
+            WHERE id_os = ?";
+
+    $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        die("Erro no prepare: " . $conn->error);
+    }
+
+    // d = double, s = string, i = inteiro
+    $stmt->bind_param(
+        "dsssiiiii",
+        $preco_os,
+        $data_inicio_os,
+        $descricao_os,
+        $data_termino_os,
+        $id_cliente,
+        $id_peca,
+        $id_mecanico,
+        $id_servico,
+        $id_veiculo,
+        $id
+    );
+
+    if ($stmt->execute()) {
         echo "Ordem de serviço atualizada com sucesso!";
     } else {
-        echo "Erro: " . $conn->error;
+        echo "Erro ao atualizar: " . $stmt->error;
     }
+
+    $stmt->close();
 }
 
 $conn->close();
-?>

@@ -6,33 +6,54 @@ if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-// Dados da Ordem de Serviço
-$preco_os = $_POST['preco_os'];
-$data_inicio_os = $_POST['data_inicio_os'];
-$descricao_os = $_POST['descricao_os'];
-$data_termino_os = $_POST['data_termino_os'];
+// Verifica se veio via POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-// Query preparada
-$sql = "INSERT INTO OS (preco_os, data_inicio_os, descricao_os, data_termino_os)
-        VALUES (?, ?, ?, ?)";
+    // Dados da Ordem de Serviço
+    $preco_os       = $_POST['preco_os'];
+    $data_inicio_os = $_POST['data_inicio_os'];
+    $descricao_os   = $_POST['descricao_os'];
+    $data_termino_os= $_POST['data_termino_os'];
+    $id_cliente     = $_POST['id_cliente'];
+    $id_peca        = $_POST['id_peca'];
+    $id_mecanico    = $_POST['id_mecanico'];
+    $id_servico     = $_POST['id_servico'];
+    $id_veiculo     = $_POST['id_veiculo'];
 
-$stmt = $conn->prepare($sql);
+    // Query preparada
+    $sql = "INSERT INTO OS 
+        (preco_os, data_inicio_os, descricao_os, data_termino_os, id_cliente, id_peca, id_mecanico, id_servico, id_veiculo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-if (!$stmt) {
-    die("Erro no prepare: " . $conn->error);
+    $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        die("Erro no prepare: " . $conn->error);
+    }
+
+    // d s s s i i i i i
+    $stmt->bind_param(
+        "dssssssss",
+        $preco_os,
+        $data_inicio_os,
+        $descricao_os,
+        $data_termino_os,
+        $id_cliente,
+        $id_peca,
+        $id_mecanico,
+        $id_servico,
+        $id_veiculo
+    );
+
+    if ($stmt->execute()) {
+        echo "Ordem de Serviço cadastrada com sucesso!";
+        header("refresh:1; url=index.php");
+    } else {
+        echo "Erro ao cadastrar: " . $stmt->error;
+    }
+
+    $stmt->close();
 }
 
-// Tipos dos dados:
-// preco = double (d)
-// datas = string (s)
-// descrição = string (s)
-$stmt->bind_param("sssi", $preco_os, $data_inicio_os, $descricao_os, $data_termino_os);
-
-if ($stmt->execute()) {
-    echo "Ordem de Serviço cadastrada com sucesso!";
-} else {
-    echo "Erro ao cadastrar: " . $stmt->error;
-}
-
-$stmt->close();
 $conn->close();
+?>
