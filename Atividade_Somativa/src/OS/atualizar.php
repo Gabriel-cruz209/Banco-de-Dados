@@ -6,7 +6,6 @@ if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-// Verifica se os dados foram enviados via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $id = $_POST['id'];
@@ -14,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $preco_os       = $_POST['preco_os'];
     $data_inicio_os = $_POST['data_inicio_os'];
     $descricao_os   = $_POST['descricao_os'];
-    $data_termino_os = $_POST['data_termino_os'];
+    $data_termino_os= $_POST['data_termino_os'];
 
     $id_cliente  = $_POST['id_cliente'];
     $id_peca     = $_POST['id_peca'];
@@ -22,19 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_servico  = $_POST['id_servico'];
     $id_veiculo  = $_POST['id_veiculo'];
 
-    // Query segura com prepared statement
-    $sql = "UPDATE OS 
-            SET preco_os = ?, data_inicio_os = ?, descricao_os = ?, data_termino_os = ?, 
-                id_cliente = ?, id_peca = ?, id_mecanico = ?, id_servico = ?, id_veiculo = ?
-            WHERE id_os = ?";
+    $stmt = $conn->prepare("
+        UPDATE OS SET
+            preco_os=?, data_inicio_os=?, descricao_os=?, data_termino_os=?,
+            id_cliente=?, id_peca=?, id_mecanico=?, id_servico=?, id_veiculo=?
+        WHERE id_os=?
+    ");
 
-    $stmt = $conn->prepare($sql);
-
-    if (!$stmt) {
-        die("Erro no prepare: " . $conn->error);
-    }
-
-    // d = double, s = string, i = inteiro
     $stmt->bind_param(
         "dsssiiiii",
         $preco_os,
@@ -52,10 +45,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         echo "Ordem de serviço atualizada com sucesso!";
     } else {
-        echo "Erro ao atualizar: " . $stmt->error;
+        echo "Erro: " . $stmt->error;
     }
 
     $stmt->close();
 }
 
 $conn->close();
+?>

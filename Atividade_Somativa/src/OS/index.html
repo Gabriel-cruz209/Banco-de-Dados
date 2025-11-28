@@ -23,74 +23,46 @@
 
     <div class="container">
       <h1>OS</h1>
-      <p><a href="index.php">Abrir lista / formulário</a></p>
 
       <h2>Inserir Ordem de Serviço</h2>
 
       <form method="post" action="inserir.php">
 
-        <!-- CLIENTE -->
-        <label>
-          Cliente:<br>
-          <input type="text" name="id_cliente" placeholder="ID do cliente" required>
-        </label>
-        <br><br>
+        <label>Cliente (ID):<br>
+          <input type="number" name="id_cliente" required>
+        </label><br><br>
 
-        <!-- VEÍCULO -->
-        <label>
-          Veículo:<br>
-          <input type="text" name="id_veiculo" placeholder="ID do veículo" required>
-        </label>
-        <br><br>
+        <label>Veículo (ID):<br>
+          <input type="number" name="id_veiculo" required>
+        </label><br><br>
 
-        <!-- MECÂNICO -->
-        <label>
-          Mecânico:<br>
-          <input type="text" name="id_mecanico" placeholder="ID do mecânico" required>
-        </label>
-        <br><br>
+        <label>Mecânico (ID):<br>
+          <input type="number" name="id_mecanico" required>
+        </label><br><br>
 
-        <!-- SERVIÇO -->
-        <label>
-          Serviço:<br>
-          <input type="text" name="id_servico" placeholder="ID do serviço" required>
-        </label>
-        <br><br>
+        <label>Serviço (ID):<br>
+          <input type="number" name="id_servico" required>
+        </label><br><br>
 
-        <!-- PEÇA -->
-        <label>
-          Peça utilizada:<br>
-          <input type="text" name="id_peca" placeholder="ID da peça" required>
-        </label>
-        <br><br>
+        <label>Peça (ID):<br>
+          <input type="number" name="id_peca" required>
+        </label><br><br>
 
-        <!-- PREÇO -->
-        <label>
-          Preço:<br>
-          <input type="number" name="preco_os" step="0.01" required />
-        </label>
-        <br><br>
+        <label>Preço:<br>
+          <input type="number" name="preco_os" step="0.01" required>
+        </label><br><br>
 
-        <!-- DATA INÍCIO -->
-        <label>
-          Data Início:<br />
-          <input type="date" name="data_inicio_os" />
-        </label>
-        <br><br>
+        <label>Data Início:<br>
+          <input type="date" name="data_inicio_os" required>
+        </label><br><br>
 
-        <!-- DESCRIÇÃO -->
-        <label>
-          Descrição:<br />
+        <label>Descrição:<br>
           <textarea name="descricao_os" rows="3"></textarea>
-        </label>
-        <br><br>
+        </label><br><br>
 
-        <!-- DATA TÉRMINO -->
-        <label>
-          Data Término:<br />
-          <input type="date" name="data_termino_os" />
-        </label>
-        <br><br>
+        <label>Data Término:<br>
+          <input type="date" name="data_termino_os">
+        </label><br><br>
 
         <button type="submit">Inserir OS</button>
       </form>
