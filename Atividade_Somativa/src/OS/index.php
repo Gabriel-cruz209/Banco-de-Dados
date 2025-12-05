@@ -2,7 +2,21 @@
 $conn = new mysqli("localhost", "root", "senaisp", "mecanica");
 if ($conn->connect_error) exit("Erro de conexão");
 
-$sql = "SELECT * FROM OS";
+// ALTERADO: Adicionado JOIN para buscar os nomes
+$sql = "SELECT 
+            OS.*,
+            C.nome_cliente,
+            V.modelo_veiculo, 
+            M.nome_mecanico,
+            S.descricao_servico,
+            P.nome_peca
+        FROM OS
+        JOIN Cliente C ON OS.id_cliente = C.id_cliente
+        JOIN Veiculo V ON OS.id_veiculo = V.id_veiculo
+        JOIN Mecanico M ON OS.id_mecanico = M.id_mecanico
+        JOIN Servico S ON OS.id_servico = S.id_servico
+        JOIN Peca P ON OS.id_peca = P.id_peca"; 
+        
 $result = $conn->query($sql);
 ?>
 
@@ -16,11 +30,11 @@ $result = $conn->query($sql);
                 <th>Data de Início</th>
                 <th>Descrição</th>
                 <th>Data de Término</th>
-                <th>ID Cliente</th>
-                <th>ID Peça</th>
-                <th>ID Mecânico</th>
-                <th>ID Serviço</th>
-                <th>ID Veículo</th>
+                <th>Cliente</th>
+                <th>Peça</th>
+                <th>Mecânico</th>
+                <th>Serviço</th>
+                <th>Veículo</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -35,11 +49,11 @@ $result = $conn->query($sql);
                             <td>{$row['data_inicio_os']}</td>
                             <td>{$row['descricao_os']}</td>
                             <td>{$row['data_termino_os']}</td>
-                            <td>{$row['id_cliente']}</td>
-                            <td>{$row['id_peca']}</td>
-                            <td>{$row['id_mecanico']}</td>
-                            <td>{$row['id_servico']}</td>
-                            <td>{$row['id_veiculo']}</td>
+                            <td>{$row['nome_cliente']}</td>
+                            <td>{$row['nome_peca']}</td>
+                            <td>{$row['nome_mecanico']}</td>
+                            <td>{$row['descricao_servico']}</td>
+                            <td>{$row['modelo_veiculo']}</td>
                             <td>
                                 <a href='editar.php?id={$row['id_os']}'>Editar</a>
                                 <a href='deletar.php?id={$row['id_os']}'>Deletar</a>
@@ -52,5 +66,5 @@ $result = $conn->query($sql);
             ?>
         </tbody>
     </table>
-    <a href='index.html'>Adicionar Nova Ordem de Serviço</a>
+    <a href='index1.php'>Adicionar Nova Ordem de Serviço</a> 
 </div>

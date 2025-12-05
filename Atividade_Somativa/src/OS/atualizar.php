@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $id = $_POST['id'];
+    $id = $_POST['id_os']; // Usando 'id_os' do formulário (editar.php)
 
     $preco_os       = $_POST['preco_os'];
     $data_inicio_os = $_POST['data_inicio_os'];
@@ -27,9 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             id_cliente=?, id_peca=?, id_mecanico=?, id_servico=?, id_veiculo=?
         WHERE id_os=?
     ");
-
+    
+    // CORRIGIDO: Agora a string de tipos tem 10 caracteres (dsssiiiiii)
+    // 9 para o SET e 1 para o WHERE id_os
     $stmt->bind_param(
-        "dsssiiiii",
+        "dsssiiiiii", // Corrigido para 10 tipos
         $preco_os,
         $data_inicio_os,
         $descricao_os,
@@ -43,7 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     if ($stmt->execute()) {
-        echo "Ordem de serviço atualizada com sucesso!";
+        echo "Ordem de serviço atualizada com sucesso!
+        <a href='index.php'><\a>";
     } else {
         echo "Erro: " . $stmt->error;
     }
